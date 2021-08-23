@@ -23,6 +23,11 @@ const swaggerOptions = {
 };
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use("/api-docs/", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+app.use(express.static('public'));
+app.use("/api-docs/", function (req,res) {
+  // res.sendFile('./index.html')
+  res.sendFile(__dirname + "/public/" + "index.html");
+})
 
 
 // cryptocurrency API'S
